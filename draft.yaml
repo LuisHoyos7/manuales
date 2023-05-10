@@ -1,0 +1,13 @@
+models:
+  Asesor:
+    name: string 
+    mobile : string 
+    specialty : varchar
+    mail : varchar 
+    observation : varchar 
+
+controllers:
+  Asesor:
+    resource
+  
+
