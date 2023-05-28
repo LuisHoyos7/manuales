@@ -1,7 +1,7 @@
 @if(empty($manual))
-{!! Form::open(['route' => 'manuals.store']) !!}
+{!! Form::open(['route' => 'manuals.store' , 'enctype' => 'multipart/form-data']) !!}
 @else
-{!! Form::model($manual, ['route' => ['manual.update', $manual->id], 'method' => 'PUT']) !!}
+{!! Form::model($manual, ['route' => ['manuals.update', $manual->id], 'method' => 'PUT']) !!}
 @endif
 <div class="card card-custom gutter-b example example-compact">
   <div class="card-header">
@@ -21,7 +21,7 @@
           {{ Form::text('description', null, ['class'  => 'form-control', 'placeholder' => 'Ingesa la descripcion del manual']) }}
         </div>
       </div>
-      <div class="row">
+      <div class="row" style="margin-top:20px">
         <div class="col-md-6">
           {{ Form::label('Elija Una Categoria')}}
           {{ Form::select('category_id',$category, null, ['class'  => 'form-control','id' => 'categoryId','placeholder' => 'seleccione una categoria', 'required']) }}
@@ -31,6 +31,10 @@
           {{ Form::select('subcategory_id',$subcategory, null, ['class'  => 'form-control','id' => 'subcategoryId','placeholder' => 'seleccione una Subcategoria', 'required']) }}
         </div>
 
+      </div>
+      <div class="row" style="margin-top:20px">
+        {{ Form::label('image', 'Subir manual') }}
+        {{ Form::file('image', ['class' => 'form-control', 'required']) }}
       </div>
     </div>
   </div>

@@ -15,5 +15,11 @@ class Manual extends Model
         'state',
         'user_id',
         'observation',
+        'url_file'
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

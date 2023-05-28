@@ -32,6 +32,7 @@
                                 <th>Id</th>
                                 <th>Nombre</th>
                                 <th>Descripción</th>
+                                <th>Estado</th>
                                 <th>Acciones</th>
                             </tr>
                         </thead>
@@ -41,13 +42,21 @@
                                 <td>{{$manual->id}}</td>
                                 <td>{{$manual->name}}</td>
                                 <td>{{$manual->description}}</td>
+                                <td>{{$manual->state}}</td>
                                 <td>
                                     {{Form::open(['route' => ['manuals.destroy', $manual->id], 'method' => 'DELETE'])}}
-                                    <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                                        <a href="{{route('manuals.edit', $manual->id) }}" class="btn btn-icon btn-outline-success btn-shadow font-weight-bold" data-toggle="tooltip" data-theme="dark" title="Editar Categoria">
+                                    <div class="btn-group-toggle" data-toggle="buttons">
+                                        <a href="{{route('manual.detail',$manual->id) }}" class="btn btn-icon btn-outline-primary btn-shadow font-weight-bold btn-sm" data-toggle="tooltip" data-theme="dark" title="Detalle del manual">
+                                            <i class="flaticon-file"></i>
+                                        </a>
+
+                                        <a href="<?php echo $manual->url_file ?>" download="Manual.pdf" class="btn btn-icon btn-outline-info btn-shadow font-weight-bold btn-sm" data-toggle="tooltip" data-theme="dark" title="Descargar manual">
+                                            <i class="flaticon-download"></i>
+                                        </a>
+                                        <a href="{{route('manuals.edit', $manual->id) }}" class="btn btn-icon btn-outline-success btn-shadow font-weight-bold btn-sm" data-toggle="tooltip" data-theme="dark" title="Editar Manual">
                                             <i class="flaticon-doc"></i>
                                         </a>
-                                        <button type="submit" class="btn btn-icon btn-outline-danger btn-shadow font-weight-bold" data-toggle="tooltip" data-theme="dark" title="Eliminar Categoria">
+                                        <button type="submit" class="btn btn-icon btn-outline-danger btn-shadow font-weight-bold btn-sm" data-toggle="tooltip" data-theme="dark" title="Eliminar Manual">
                                             <i class="flaticon-delete-1"></i>
                                         </button>
                                     </div>
