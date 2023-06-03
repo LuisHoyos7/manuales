@@ -15,11 +15,11 @@ class CreateForumsTable extends Migration
     {
         Schema::create('forums', function (Blueprint $table) {
             $table->id();
-            $table->string('description');
-            $table->string('state');
+            $table->string('description')->nullable();
+            $table->string('state')->nullable();
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->foreignId('manual_id')->constrained()->cascadeOnDelete();
-            $table->string('observation');
+            $table->string('observation')->nullable();
             $table->timestamps();
         });
     }

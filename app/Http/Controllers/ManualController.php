@@ -31,7 +31,7 @@ class ManualController extends Controller
     {
         $category =  Category::pluck('name', 'id');
         $subcategory =  Subcategory::pluck('name', 'id');
-        return view('manuals.create', compact('manual', 'category', 'subcategory'));
+        return view('manuals.edit', compact('manual', 'category', 'subcategory'));
     }
 
     public function update(Request $request, Manual $manual)

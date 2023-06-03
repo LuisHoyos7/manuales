@@ -15,14 +15,15 @@ class CreateManualsTable extends Migration
     {
         Schema::create('manuals', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('description');
+            $table->string('name')->nullable();
+            $table->string('description')->nullable();
             $table->foreignId('category_id')->constrained()->cascadeOnDelete();
             $table->foreignId('subcategory_id')->constrained()->cascadeOnDelete();
-            $table->string('qualification');
-            $table->string('state');
-            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
-            $table->string('observation');
+            $table->string('qualification')->nullable();
+            $table->string('state')->nullable();
+            $table->integer('user_id')->nullable();
+            $table->string('observation')->nullable();
+            $table->string('url_file')->nullable();
             $table->timestamps();
         });
     }

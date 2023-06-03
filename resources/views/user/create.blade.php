@@ -1,5 +1,5 @@
 @extends('layouts.app')
 
 @section('content')
-    customer.show template
+@include('user.form')
 @endsection

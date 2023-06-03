@@ -11,7 +11,7 @@
 	<div class="d-flex flex-column flex-root">
 		<!--begin::Login-->
 		<div class="login login-5 login-signin-on d-flex flex-row-fluid" id="kt_login">
-			<div class="d-flex flex-center bgi-size-cover bgi-no-repeat flex-row-fluid" style="background-image: url(metronic/dist/assets/media/bg/bg-5.jpg);">
+			<div class="d-flex flex-center bgi-size-cover bgi-no-repeat flex-row-fluid" style="background-image: url(metronic/dist/assets/media/bg/bg-2.jpg);">
 				<div class="login-form text-center text-white p-7 position-relative overflow-hidden">
 					<!--begin::Login Header-->
 					<div class="d-flex flex-center mb-15">
@@ -31,7 +31,7 @@
 							@csrf
 
 							<div class="form-group row">
-								<input id="email" type="email" class="form-control h-auto text-white bg-white rounded-pill border-0 py-4 px-8 @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus placeholder="Usuario">
+								<input id="email" type="email" class="form-control h-auto  bg-white rounded-pill border-0 py-4 px-8 @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus placeholder="Usuario">
 								@error('email')
 								<span class="invalid-feedback" role="alert">
 									<strong>{{ $message }}</strong>
@@ -40,7 +40,7 @@
 							</div>
 
 							<div class="form-group row">
-								<input id="password" type="password" class="form-control h-auto text-white bg-white rounded-pill border-0 py-4 px-8 @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" placeholder="contraseña">
+								<input id="password" type="password" class="form-control h-auto bg-white rounded-pill border-0 py-4 px-8 @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" placeholder="contraseña">
 								@error('password')
 								<span class="invalid-feedback" role="alert">
 									<strong>{{ $message }}</strong>
@@ -49,7 +49,7 @@
 							</div>
 
 							<div class="form-group text-center mt-10">
-								<button type="submit" class="btn btn-pill btn-primary opacity-90 px-15 py-3">
+								<button type="submit" class="btn btn-pill btn-primary px-15 py-3">
 									Ingresar
 								</button>
 							</div>

@@ -27,11 +27,12 @@ class RolesAndPermissionsSeeder extends Seeder
         array_push($permission_array, $permission_asesor);
 
         // role super-admin
-        $roleSuperAdmin = Role::create(['name' => 'super-admin']);
+        $roleSuperAdmin = Role::create(['name' => 'administrador']);
         //asignacion de permisos añ rol super-admin
         $roleSuperAdmin->syncPermissions($permission_array);
         //rol asesor 
-        $roleAsesor = Role::create(['name' => 'asesor']);
+        $roleAsesor = Role::create(['name' => 'avanzado']);
+        $roleBasico = Role::create(['name' => 'basico']);
         //asignacion de permisos al rol asesor 
         $roleAsesor->givePermissionTo($permission_asesor);
 
@@ -40,17 +41,9 @@ class RolesAndPermissionsSeeder extends Seeder
             'name' => 'admin',
             'email' => 'admin@gmail.com',
             'password' => Hash::make('admin'),
+            'state' => 'Activo'
         ]);
         //asignacion de rol a usuario admin
-        $superAdminUser->assignRole('super-admin');
-
-        //creacion de usuario asesor
-        $asesorUser =  User::create([
-            'name' => 'asesor',
-            'email' => 'asesor@gmail.com',
-            'password' => Hash::make('asesor'),
-        ]);
-        //asignacion de role a usuario asesor 
-        $asesorUser->assignRole('asesor');
+        $superAdminUser->assignRole('administrador');
     }
 }

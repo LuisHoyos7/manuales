@@ -1,5 +1,5 @@
 @extends('layouts.app')
 
 @section('content')
-    @include('asesor.form')
+@include('user.form')
 @endsection

@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\Rol;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -26,7 +28,9 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        $rol = Rol::pluck('name', 'id');
+
+        return view('user.create', compact('rol'));
     }
 
     /**
@@ -37,18 +41,18 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+        User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'rol_id' => $request->rol_id,
+            'password' => Hash::make($request->password),
+            'state' => "Activo"
+        ]);
+
+        return redirect()->route('user.index')
+            ->with('info', 'usuario creado con Exito!');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\User  $user
-     * @return \Illuminate\Http\Response
-     */
-    public function show(User $user)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.
@@ -56,9 +60,11 @@ class UserController extends Controller
      * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function edit(User $user)
+    public function edit(Request $request, User $user)
     {
-        //
+        $rol =  Rol::pluck('name', 'id');
+
+        return view('user.edit', compact('user', 'rol'));
     }
 
     /**
@@ -70,7 +76,15 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        //
+        $user->update([
+            'name' => $request->name,
+            'email' => $request->email,
+            'rol_id' => $request->rol_id,
+            'password' => Hash::make($request->password),
+        ]);
+
+        return redirect()->route('user.index')
+            ->with('success', 'usuario actualizado con Exito!');
     }
 
     /**
@@ -81,6 +95,11 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        //
+        $user->update([
+            'state' => "Inactivo"
+        ]);
+
+        return redirect()->route('user.index')
+            ->with('error', 'usuario inactivado con exito!');
     }
 }
