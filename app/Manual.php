@@ -15,7 +15,8 @@ class Manual extends Model
         'state',
         'user_id',
         'observation',
-        'url_file'
+        'url_file',
+        'is_favorite'
     ];
 
     public function user()
