@@ -59,6 +59,11 @@
                                         <button type="submit" class="btn btn-icon btn-outline-danger btn-shadow font-weight-bold btn-sm" data-toggle="tooltip" data-theme="dark" title="Eliminar Manual">
                                             <i class="flaticon-delete-1"></i>
                                         </button>
+                                        @if($manual->is_favorite == 0)
+                                        <a href="{{route('manual_user.edit', $manual->id) }}" class="btn btn-icon btn-outline-primary btn-shadow font-weight-bold btn-sm" data-toggle="tooltip" data-theme="dark" title="Añadir a favoritos">
+                                            <i class="flaticon-add"></i>
+                                        </a>
+                                        @endif
                                     </div>
                                     {{Form::close()}}
                                 </td>

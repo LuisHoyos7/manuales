@@ -42,7 +42,15 @@
                                 <td>{{$user->id}}</td>
                                 <td>{{$user->name}}</td>
                                 <td>{{$user->email}}</td>
-                                <td>Admin</td>
+                                @if($user->rol_id == 1)
+                                <td>Administrador</td>
+                                @endif
+                                @if($user->rol_id == 2)
+                                <td>Avanzado</td>
+                                @endif
+                                @if($user->rol_id == 3)
+                                <td>Básico</td>
+                                @endif
                                 <td>
                                     {{Form::open(['route' => ['user.destroy', $user->id], 'method' => 'DELETE'])}}
                                     <div class="btn-group-toggle" data-toggle="buttons">

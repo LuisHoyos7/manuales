@@ -26,3 +26,6 @@ Route::resource('manuals', 'ManualController');
 Route::get('manual/detail/{manual}', 'ManualController@detail')->name('manual.detail');
 
 Route::get('cargarCategorias', 'CategoryController@searchCategory');
+
+//rutas para manuale preferidos de usuarios
+Route::resource('manual_user', 'ManualUserController');
