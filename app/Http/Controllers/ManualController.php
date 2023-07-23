@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Manual;
 use App\Category;
+use App\Comment;
 use App\Subcategory;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
@@ -81,6 +82,9 @@ class ManualController extends Controller
     public function detail(Manual $manual)
     {
         $manual = $manual->with('user')->find($manual->id);
-        return view('manuals.detail', compact('manual'));
+
+        $comments = Comment::where("manual_id", $manual->id)->get();
+
+        return view('manuals.detail', compact('manual', 'comments'));
     }
 }

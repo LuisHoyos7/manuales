@@ -29,3 +29,6 @@ Route::get('cargarCategorias', 'CategoryController@searchCategory');
 
 //rutas para manuale preferidos de usuarios
 Route::resource('manual_user', 'ManualUserController');
+
+//rutas de comentarios
+Route::resource('comment', 'CommentController');
