@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Creator: CorelDRAW 2020 (64-Bit) -->
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="5.5801mm" height="5.5801mm" version="1.1" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+viewBox="0 0 0.61 0.61"
+ xmlns:xlink="http://www.w3.org/1999/xlink"
+ xmlns:xodm="http://www.corel.com/coreldraw/odm/2003">
+ <defs>
+  <style type="text/css">
+   <![CDATA[
+    .str0 {stroke:white;stroke-width:0.01;stroke-miterlimit:22.9256}
+    .fil0 {fill:#B7E546}
+    .fil1 {fill:white}
+   ]]>
+  </style>
+    <clipPath id="id0">
+     <rect x="0" y="0" width="0.6" height="0.6"/>
+    </clipPath>
+     <clipPath id="id1">
+      <rect x="0.12" y="0.12" width="0.37" height="0.37"/>
+     </clipPath>
+ </defs>
+ <g id="Capa_x0020_1">
+  <metadata id="CorelCorpID_0Corel-Layer"/>
+  <g id="_2140035150512">
+   <g style="clip-path:url(#id0)">
+    <image x="0" y="0" width="0.6" height="0.6" xlink:href="Editar 2_Images\Editar 2_ImgID1.png"/>
+   </g>
+   <circle class="fil0" cx="0.3" cy="0.31" r="0.22"/>
+   <g>
+    <polygon class="fil1 str0" points="0.13,0.37 0.36,0.14 0.39,0.14 0.47,0.21 0.47,0.23 0.46,0.25 0.24,0.47 0.14,0.47 0.13,0.44 "/>
+    <g style="clip-path:url(#id1)">
+     <image x="0.12" y="0.12" width="0.37" height="0.37" xlink:href="Editar 2_Images\Editar 2_ImgID2.png"/>
+    </g>
+   </g>
+  </g>
+ </g>
+</svg>
