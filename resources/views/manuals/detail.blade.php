@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+@include('layouts.flash-message')
 <div class="card card-custom gutter-b example example-compact">
   <div class="card-header">
     <h5 class="card-title">
@@ -8,30 +9,24 @@
     </h5>
   </div>
 
-  <div class="row" style="margin-top: 20px; text-align: center;">
-    <div class="col-4">
-      <div class=" col-12">
-        <label>Nombre</label>
-        <input disabled class="form-control" value="{{$manual->name}}" style="text-align: center;">
-      </div>
-      <div class="col-12" style="margin-top: 20px;">
-        <label>Descripción</label>
-        <input disabled class="form-control" value="{{$manual->description}}" style="text-align: center;">
-      </div>
-      <div class="col-12" style="margin-top: 20px;">
-        <label>Estado</label>
-        <input disabled class="form-control" value="{{$manual->state}}" style="text-align: center;">
-      </div>
-      <div class="col-12" style="margin-top: 20px;">
-        <label>Usuario que lo cargó</label>
-        <input disabled class="form-control" value="{{$manual->user->name}}" style="text-align: center;">
-      </div>
-      <div class="col-12" style="padding-bottom: 20px; margin-top: 20px;">
-        <label>Fecha de creación</label>
-        <input disabled class="form-control" value="{{$manual->created_at}}" style="text-align: center;">
-      </div>
+  <div class="row" style="margin: 20px; text-align: center;">
+    <div class=" col-3">
+      <label>Nombre</label>
+      <input disabled class="form-control" value="{{$manual->name}}" style="text-align: center;">
     </div>
-    <div class="col-6">
+    <div class="col-3">
+      <label>Descripción</label>
+      <input disabled class="form-control" value="{{$manual->description}}" style="text-align: center;">
+    </div>
+    <div class="col-3">
+      <label>Usuario que lo cargó</label>
+      <input disabled class="form-control" value="{{$manual->user->name}}" style="text-align: center;">
+    </div>
+    <div class="col-3">
+      <label>Fecha de creación</label>
+      <input disabled class="form-control" value="{{$manual->created_at}}" style="text-align: center;">
+    </div>
+    <div class="col-6" style="margin-top:20px">
       <div class="form-group form-group-last" style="display: flex; justify-content: center;">
         <div style="margin-top:8px">
           Comentarios
@@ -48,27 +43,58 @@
         <div class="comment-username">{{$comment->user->name}}</div>
         <div class="comment-description">{{$comment->description}}</div>
         <div class="comment-date">{{$comment->created_at->format('d/m/Y H:i')}}</div>
-
         <!-- Botón para eliminar el comentario -->
         {{Form::open(['route' => ['comment.destroy', $comment->id], 'method' => 'DELETE'])}}
         <p class="delete-comment-btn">
           <button type="submit" class="btn btn-outline-danger delete-icon fas fa-trash-alt" data-toggle="tooltip" data-theme="dark" title="Eliminar comentario"></button>
         </p>
         {{Form::close()}}
-        <!-- Botón para editar el comentario (opcional) -->
-        <!-- <p class="edit-comment-btn">
-          <i class="edit-icon fas fa-edit"></i>Editar
-        </p> -->
       </div>
       @endforeach
     </div>
-    <div class="col-2">
+    <div class="col-6" style="margin-top:20px">
       <div class="form-group form-group-last">
+        {{Form::open(['route' => ['comment.show', $raiting ? $raiting->id : 0], 'method' => 'GET'])}}
         <p>Calificaciónes</p>
-        <i class="fas fa-star"></i>
-        <i class="fas fa-star"></i>
-        <i class="fas fa-star"></i>
-        <i class="fas fa-star"></i>
+        <div style="display:flex; justify-content: center; margin-top:35px">
+          <div class="mr-4" style="width: 20%;">
+            <input hidden name="manual_id" value="{{$manual->id}}">
+            <select name="calification" class="form-control">
+              <option value=" 1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </select>
+          </div>
+          <div>
+            <button class="btn btn-success">Guardar</button>
+          </div>
+        </div>
+        {{Form::close()}}
+        <div class="rating">
+          <?php
+          $calification = $raitingGlobal;
+          $fullStars = floor($calification); // Parte entera de la calificación
+          $halfStar = ceil($calification - $fullStars); // Estrella media (si corresponde)
+          $emptyStars = 5 - $fullStars - $halfStar; // Estrellas vacías
+          ?>
+
+          <?php for ($i = 0; $i < $fullStars; $i++) : ?>
+            <i class="fas fa-star"></i> <!-- Usar aquí el icono de estrella que prefieras -->
+          <?php endfor; ?>
+
+          <?php if ($halfStar) : ?>
+            <i class="fas fa-star-half-alt"></i> <!-- Estrella media (icono medio de estrella) -->
+          <?php endif; ?>
+
+          <?php for ($i = 0; $i < $emptyStars; $i++) : ?>
+            <i class="far fa-star"></i> <!-- Estrella vacía (icono de estrella sin rellenar) -->
+          <?php endfor; ?>
+          <div class="mt-2">
+            <h1>{{number_format($raitingGlobal,1)}}</h1>
+          </div>
+        </div>
       </div>
     </div>
   </div>

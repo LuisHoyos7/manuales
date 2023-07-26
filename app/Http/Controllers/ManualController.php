@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Manual;
+use App\Raiting;
 use App\Category;
 use App\Comment;
 use App\Subcategory;
@@ -83,8 +84,12 @@ class ManualController extends Controller
     {
         $manual = $manual->with('user')->find($manual->id);
 
+        $raiting = Raiting::where("manual_id", $manual->id)->where("user_id", Auth::user()->id)->first();
+
+        $raitingGlobal = Raiting::where("manual_id", $manual->id)->avg('calification');
+
         $comments = Comment::where("manual_id", $manual->id)->get();
 
-        return view('manuals.detail', compact('manual', 'comments'));
+        return view('manuals.detail', compact('manual', 'comments', "raiting", "raitingGlobal"));
     }
 }

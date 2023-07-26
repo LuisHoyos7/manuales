@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Redirect;
 use App\Comment;
+use App\Raiting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -55,9 +56,28 @@ class CommentController extends Controller
      * @param  \App\CommentController  $commentController
      * @return \Illuminate\Http\Response
      */
-    public function show(CommentController $commentController)
+    public function show(Request $request, $id)
     {
-        //
+        if (intVal($id) == 0) {
+            Raiting::Create(
+                [
+                    "user_id" => Auth::user()->id,
+                    "manual_id" => $request->manual_id,
+                    "calification" => $request->calification
+                ]
+            );
+        } else {
+            $raiting = Raiting::find($id);
+            $raiting->update(
+                [
+                    "user_id" => Auth::user()->id,
+                    "manual_id" => $request->manual_id,
+                    "calification" => $request->calification
+                ]
+            );
+        }
+        return redirect()->route("manual.detail", ['manual' => $request->manual_id])
+            ->with('info', 'Calificación actualizada con éxito!');
     }
 
     /**
