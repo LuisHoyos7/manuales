@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\User;
 use App\Manual;
 use App\Category;
-use App\SubCategory;
+use App\Subcategory;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
