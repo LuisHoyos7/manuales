@@ -33,7 +33,7 @@ class HomeController extends Controller
 
         $categories = Category::count();
 
-        $subcategories = SubCategory::count();
+        $subcategories = Subcategory::count();
 
         return view('home', compact("users", "manuals", "categories", "subcategories"));
     }
