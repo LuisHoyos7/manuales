@@ -6,6 +6,7 @@
                 <span class="d-block text-muted pt-2 font-size-sm">Listado general de los manuales</span>
             </h3>
         </div>
+        @if(auth::user()->id === 1 || auth::user()->id === 2 )
         <div class="card-toolbar">
             <a href="{{route('manuals.create')}}" class="btn btn-primary font-weight-bolder">
                 <span class="svg-icon svg-icon-md"><!--begin::Svg Icon | path:/metronic/themes/metronic/theme/html/demo1/dist/assets/media/svg/icons/Design/Flatten.svg-->
@@ -20,6 +21,7 @@
             </a>
             <!--end::Button-->
         </div>
+        @endif
     </div>
     <div class="card-body mb-10 px-20">
         <!--begin: Datatable-->
@@ -53,12 +55,14 @@
                                         <a href="<?php echo $manual->url_file ?>" download="Manual.pdf" class="btn btn-icon btn-outline-info btn-shadow font-weight-bold btn-sm" data-toggle="tooltip" data-theme="dark" title="Descargar manual">
                                             <i class="flaticon-download"></i>
                                         </a>
+                                        @if(auth::user()->id === 1 || auth::user()->id === 2 )
                                         <a href="{{route('manuals.edit', $manual->id) }}" class="btn btn-icon btn-outline-success btn-shadow font-weight-bold btn-sm" data-toggle="tooltip" data-theme="dark" title="Editar Manual">
                                             <i class="flaticon-doc"></i>
                                         </a>
                                         <button type="submit" class="btn btn-icon btn-outline-danger btn-shadow font-weight-bold btn-sm" data-toggle="tooltip" data-theme="dark" title="Eliminar Manual">
                                             <i class="flaticon-delete-1"></i>
                                         </button>
+                                        @endif
                                         @if($manual->is_favorite == 0)
                                         <a href="{{route('manual_user.edit', $manual->id) }}" class="btn btn-icon btn-outline-primary btn-shadow font-weight-bold btn-sm" data-toggle="tooltip" data-theme="dark" title="Añadir a favoritos">
                                             <i class="flaticon-add"></i>

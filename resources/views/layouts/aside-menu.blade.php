@@ -2,7 +2,7 @@
 	<!--begin::Menu Nav-->
 	<ul class="menu-nav">
 		<li class="menu-item menu-item-active" aria-haspopup="true">
-			<a href="index.html" class="menu-link">
+			<a href="{{ route('home')}}" class="menu-link">
 				<span class="svg-icon menu-icon">
 					<!--begin::Svg Icon | path:assets/media/svg/icons/Design/Layers.svg-->
 					<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
@@ -18,6 +18,7 @@
 			</a>
 		</li>
 
+		@if(auth::user()->id === 1 || auth::user()->id === 2 )
 		<li class="menu-section">
 			<h4 class="menu-text">Configuraciones</h4>
 			<i class="menu-icon ki ki-bold-more-hor icon-md"></i>
@@ -55,7 +56,7 @@
 				<span class="menu-text">Sub categorias</span>
 			</a>
 		</li>
-
+		@endif
 		<li class="menu-section">
 			<h4 class="menu-text">Gestion</h4>
 			<i class="menu-icon ki ki-bold-more-hor icon-md"></i>
@@ -93,6 +94,7 @@
 			</a>
 		</li>
 
+		@if(auth::user()->id === 1)
 		<li class="menu-section">
 			<h4 class="menu-text">Usuarios</h4>
 			<i class="menu-icon ki ki-bold-more-hor icon-md"></i>
@@ -114,6 +116,7 @@
 				<span class="menu-text">usuarios del sistema</span>
 			</a>
 		</li>
+		@endif
 	</ul>
 </div>
 
